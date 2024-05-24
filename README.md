@@ -1,1 +1,1 @@
-#Shows current temperature in Moscow
+Shows current temperature in Moscow
