@@ -15,13 +15,13 @@ func main() {
 	}
 
 	router := gin.Default()
-	router.GET("/weather", func(c *gin.Context) {
+	router.GET("/", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"temperature": parsing.GetTemperature(viper.GetString("url")),
 		})
 	})
 
-	err := router.Run(":8080")
+	err := router.Run(viper.GetString("port"))
 	if err != nil {
 		logrus.Fatal(err)
 	}
