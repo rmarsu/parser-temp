@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"parser/parsing"
 
 	"github.com/gin-gonic/gin"
@@ -17,7 +16,9 @@ func main() {
 
 	router := gin.Default()
 	router.GET("/weather", func(c *gin.Context) {
-		fmt.Println(parsing.GetTemperature(viper.GetString("url")))
+		c.JSON(200, gin.H{
+			"temperature": parsing.GetTemperature(viper.GetString("url")),
+		})
 	})
 
 	err := router.Run(":8080")
